@@ -162,14 +162,13 @@ async function drawProductDetail(productId) {
   const frag = document.importNode(templates.productDetail, true)
 
   // 2. 요소 선택
+  const categoryRouteEl = frag.querySelector('.third')
+  const titleRouteEl = frag.querySelector('.fourth')
   const titleEl = frag.querySelector('.title')
-  const categoryEl = frag.querySelector('.category')
   const descEl = frag.querySelector('.description')
   const priceEl = frag.querySelector('.price')
   const mainImgEl = frag.querySelector('.main-img')
   const detailImgEl = frag.querySelector('.detail-img')
-  // 2-2. 버튼 관련
-  const backEl = frag.querySelector(".back")
   const addToCartEl = frag.querySelector('.add-to-cart')
   const buyItNowEl = frag.querySelector('.buy-it-now')
   // 3. 필요한 데이터 불러오기
@@ -180,17 +179,14 @@ async function drawProductDetail(productId) {
     }
   })
   // 4. 내용 채우기
+  categoryRouteEl.textContent = category
+  titleRouteEl.textContent = title
   titleEl.textContent = title
-  categoryEl.textContent = category
   descEl.textContent = description
   priceEl.textContent = options[0].price
   mainImgEl.setAttribute("src", mainImgUrl)
   detailImgEl.setAttribute("src", detailImgUrls[0])
   // 5. 이벤트 리스너 등록하기
-  backEl.addEventListener('click', e => {
-    e.preventDefault() // 새 글이 써지는 것을 방지하기 위함 - 폼의 submit 이벤트가 일어나지 않게 함
-    drawProductList();
-  })
   // 6. 템플릿을 문서에 삽입
   rootEl.textContent = ''
   rootEl.appendChild(frag)

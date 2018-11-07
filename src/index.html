@@ -20,7 +20,7 @@
     <div class="logo">
       GARDEN
     </div>
-    <div class="category">
+    <div class="category-wrap">
       <ul class="category-list">
         <li class="entire">전체 상품</li>
         <li class="flower">꽃</li>
@@ -60,17 +60,21 @@
   </div>
   <!-- 상품 세부내용 -->
   <template id="product-detail">
+    <div class="page-route">
+      <span class="first">홈</span>
+      <span class="second">전체상품</span>
+      <span class="third"></span>
+      <span class="fourth"></span>
+    </div>
     <div class="buttons">
-      <button class="back">뒤로</button>
       <button class="add-to-cart">장바구니 넣기</button>
       <button class="buy-it-now">바로 구매하기</button>
     </div>
     <div class="product-detail">
+      <img class="main-img" />
       <h2 class="title"></h2>
-      <p class="category"></p>
       <p class="description"></p>
       <p class="price"></p>
-      <img class="main-img" />
       <img class="detail-img" />
     </div>
   </template>

@@ -77,7 +77,6 @@ body {
   text-align: center;
   margin-top: 20px;
 }
-
 .member li{
   display: inline-block;
   margin: 10px;
@@ -92,7 +91,7 @@ body {
   text-align: center;
   padding: 20px;
 }
-.category{
+.category-wrap{
   background-color: #aaa;
 }
 .category-list{
@@ -139,6 +138,31 @@ body {
   background-color: lime;
   cursor: pointer;
 }
-.main-img{
+.product-item .main-img{
   width: 160px;
+}
+.detail-img{
+  max-width: 370px;
+  margin: 0 auto;
+}
+.product-detail{
+  display: flex;
+  flex-direction: column;
+}
+.product-detail .main-img{
+  order: -1;
+}
+.page-route{
+  background-color: greenyellow;
+}
+.page-route span{
+  display: inline-block;
+  padding: 5px 0 5px 3px;
+}
+.page-route span::after{
+  content: ' > ';
+  padding: 0 3px 0 4px;
+}
+.page-route span:last-child::after{
+  content: '';
 }
