@@ -63,3 +63,7 @@ typings/
 
 # next.js build output
 .next
+
+# reference images and database
+/src/images
+db.defaults

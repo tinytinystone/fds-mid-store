@@ -1,5 +1,143 @@
 $main-color: skyblue;
 
+@charset "utf-8";
+@import url("https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css");
+
+/* 스타일 초기화 */
+html, body, div, span, h1, h2, h3, h4, h5, h6,
+p, a, address, em, img, dl, dt, dd, ol, ul, li,
+form, label, legend, article, aside, figure,
+figcaption, footer, header, nav, section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1em;
+  font: inherit;
+  vertical-align: baseline;
+}
+ul {
+	list-style-type: none;
+}
+/* CSS 모듈 */
+.clearfix::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+/* 숨김 콘텐츠 */
+.readable-hidden, .skip-nav, legend{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  margin: -1px;
+  clip: rect(0,0,0,0);
+}
+.skip-nav:focus{
+  width: 100%;
+  height: auto;
+  padding: 1em;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  clip: rect(auto, auto, auto, auto);
+  z-index: 100;
+}
+
+/* 본문 스타일 */
+html{
+  font-size: 10px;
+}
+/* 하이퍼링크 스타일 */
+a{
+  color: inherit;
+  text-decoration: none;
+}
+/* 레이아웃 */
+*, *::before, *::after{
+  box-sizing: border-box;
+}
 body {
+  color: #181818;
+  background-color: #fff;
+  font-family: 'Spoqa Han Sans', 'Sans-serif';
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+.wrap{
+  width: 480px;
+  height: 100vh;
+  margin: 0 auto;
   background-color: $main-color;
+}
+.member{
+  padding: 0;
+  background-color: yellow;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.member li{
+  display: inline-block;
+  margin: 10px;
+  padding: 5px 10px;
+  background-color: red;
+  cursor: pointer;
+}
+.logo{
+  background-color: #eee;
+  font-size: 5rem;
+  font-weight: 900;
+  text-align: center;
+  padding: 20px;
+}
+.category{
+  background-color: #aaa;
+}
+.category-list{
+  text-align: center;
+}
+.category-list li{
+  display: inline-block;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+}
+.main-page{
+  background-color: skyblue;
+}
+.login-form{
+  width: 300px;
+  margin: 10vh auto;
+  position: relative;
+  background-color: yellow;
+}
+.login-form input{
+  margin: 1rem;
+  width: 20rem;
+  height: 3rem;
+}
+.login-form button{
+  padding: 10px 20px;
+  position: absolute;
+  top: 30px;
+  right: 0;
+}
+.product-list-wrap p{
+  display: block;
+  margin: 20px;
+  text-align: center;
+}
+.product-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.product-item{
+  margin: 3rem 1.5rem;
+  background-color: lime;
+}
+.main-img{
+  width: 160px;
 }
