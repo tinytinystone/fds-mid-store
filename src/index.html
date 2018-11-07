@@ -23,11 +23,11 @@
     <div class="category">
       <ul class="category-list">
         <li class="entire">전체 상품</li>
+        <li class="flower">꽃</li>
         <li class="plant">관엽식물</li>
         <li class="cactus">선인장</li>
         <li class="hanging">행잉식물</li>
-        <li class="flower">꽃</li>
-        <li class="orchid">서양난</li>
+        <li class="orchid">난</li>
       </ul>
     </div>
     <div class="main-page">
@@ -54,10 +54,26 @@
     <article class="product-item">
       <img class="main-img" />
       <div class="title"></div>
-      <div class="price"></div>
+      <div><span class="price"></span> 원</div>
     </article>
   </template>
   </div>
+  <!-- 상품 세부내용 -->
+  <template id="product-detail">
+    <div class="buttons">
+      <button class="back">뒤로</button>
+      <button class="add-to-cart">장바구니 넣기</button>
+      <button class="buy-it-now">바로 구매하기</button>
+    </div>
+    <div class="product-detail">
+      <h2 class="title"></h2>
+      <p class="category"></p>
+      <p class="description"></p>
+      <p class="price"></p>
+      <img class="main-img" />
+      <img class="detail-img" />
+    </div>
+  </template>
   <script src="./index.js"></script>
 </body>
 
