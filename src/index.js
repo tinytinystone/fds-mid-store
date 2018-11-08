@@ -186,9 +186,14 @@ async function drawProductDetail(productId) {
 
   const formEl = frag.querySelector('.cart-form')
   const selectEl = frag.querySelector('.select-option')
+  const quantityEl = frag.querySelector(".quantity-choose");
   const titleEl = frag.querySelector('.title')
   const descEl = frag.querySelector('.description')
+
   const priceEl = frag.querySelector('.price')
+  let finalPrice = 0
+  let optionPrice = 0
+
   const mainImgEl = frag.querySelector('.main-img')
   const detailImgEl = frag.querySelector('.detail-img')
   const addToCartEl = frag.querySelector('.add-to-cart')
@@ -200,10 +205,17 @@ async function drawProductDetail(productId) {
       _embed: "options"
     }
   })
+  function drawPrice() {
+    if (finalPrice === 0 || isNaN(finalPrice)) {
+      priceEl.textContent = "옵션과 수량을 확인해 주세요.";
+    } else {
+      priceEl.textContent = `${finalPrice} 원`;
+    }
+  }
   // 4. 내용 채우기
   categoryRouteEl.textContent = category
   titleRouteEl.textContent = title
-  priceEl.textContent = '가격을 확인하시려면, 옵션을 선택해 주세요.'
+  drawPrice()
 
   options.forEach(option => {
     const optionEl = document.createElement("option")
@@ -220,17 +232,33 @@ async function drawProductDetail(productId) {
   selectEl.addEventListener('change', e => {
     const optionId = parseInt(e.target.value);
     const option = options.find(item => item.id === optionId)
-    priceEl.textContent = `${option.price} 원`
+    optionPrice = option.price
+  })
+  quantityEl.addEventListener('input', e => {
+    const quantityId = e.target.value
+    finalPrice = optionPrice * parseInt(quantityId)
+    let result = drawPrice()
+    if (result) {
+      priceEl.textContent = "수량을 확인해 주세요."
+    } else {
+      result
+    }
   })
   formEl.addEventListener('submit', async e => {
     e.preventDefault()
     const optionId = parseInt(e.target.elements.option.value)
     const quantity = parseInt(e.target.elements.quantity.value)
-    await api.post('/cartItems', {
-      optionId,
-      quantity
-    })
-    alert('장바구니에 담겼습니다.')
+    if (!localStorage.token) {
+      alert('로그인을 먼저 해주세요.')
+    } else if (!quantity) {
+      alert('옵션과 수량을 확인해 주세요.')
+    } else {
+      await api.post('/cartItems', {
+        optionId,
+        quantity
+      })
+      alert('장바구니에 담겼습니다.')
+    }
   })
   // 6. 템플릿을 문서에 삽입
   drawFragment(frag);
