@@ -44,7 +44,6 @@ ul {
   clip: rect(auto, auto, auto, auto);
   z-index: 100;
 }
-
 /* 본문 스타일 */
 html{
   font-size: 10px;
@@ -67,7 +66,6 @@ body {
 }
 .wrap{
   width: 400px;
-  height: 100vh;
   margin: 0 auto;
   background-color: $main-color;
 }
@@ -77,7 +75,7 @@ body {
   text-align: center;
   margin-top: 20px;
 }
-.member li{
+.sign-in, .sign-out, .sign-up, .my-cart, .order{
   display: inline-block;
   margin: 10px;
   padding: 5px 10px;
@@ -165,4 +163,20 @@ body {
 }
 .page-route span:last-child::after{
   content: '';
+}
+.hidden{
+  display: none;
+}
+.cart-list{
+  width: 350px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.cart-item{
+  display: flex;
+}
+.cart-main-img{
+  width: 40%;
+  height: 40%;
 }

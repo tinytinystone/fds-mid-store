@@ -1,84 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>GARDEN</title>
+    <link rel="stylesheet" href="./index.scss" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>GARDEN</title>
-  <link rel="stylesheet" href="./index.scss">
-</head>
+  <body>
+    <template id="layout">
+      <div class="wrap">
+        <ul class="member">
+          <li class="sign-in">SIGN IN</li>
+          <li class="sign-out hidden">LOG OUT</li>
+          <li class="sign-up">SIGN UP</li>
+          <li class="my-cart">MY CART</li>
+          <li class="order">ORDER</li>
+        </ul>
+        <div class="logo">GARDEN</div>
+        <nav class="category-wrap">
+          <ul class="category-list">
+            <li class="entire">전체 상품</li>
+            <li class="flower">꽃</li>
+            <li class="plant">관엽식물</li>
+            <li class="cactus">선인장</li>
+            <li class="hanging">행잉식물</li>
+            <li class="orchid">난</li>
+          </ul>
+        </nav>
+        <main class="main"></main>
+      </div>
+    </template>
 
-<body>
-  <div class="wrap">
-    <ul class="member">
-      <li class="sign-in">SIGN IN</li>
-      <li class="sign-up">SIGN UP</li>
-      <li class="my-cart">MY CART</li>
-      <li class="order">ORDER</li>
-    </ul>
-    <div class="logo">
-      GARDEN
-    </div>
-    <div class="category-wrap">
-      <ul class="category-list">
-        <li class="entire">전체 상품</li>
-        <li class="flower">꽃</li>
-        <li class="plant">관엽식물</li>
-        <li class="cactus">선인장</li>
-        <li class="hanging">행잉식물</li>
-        <li class="orchid">난</li>
-      </ul>
-    </div>
-    <div class="main-page">
-      <div class="root"></div>
-    </div>
     <!-- 로그인 폼 -->
     <template id="login-form">
       <form class="login-form">
-        <input type="text" name="username">
-        <input type="password" name="password">
-        <button>로그인</button>
+        <input type="text" name="username" />
+        <input type="password" name="password" /> <button>로그인</button>
       </form>
     </template>
     <!-- 상품 목록 -->
     <template id="product-list">
       <div class="product-list-wrap">
         <p>총 <span class="num"></span> 개의 식물을 찾았습니다.</p>
-        <section class="product-list">
-        </section>
+        <section class="product-list"></section>
       </div>
     </template>
-  <!-- 상품 목록 내부의 항목 -->
-  <template id="product-item">
-    <article class="product-item">
-      <img class="main-img" />
-      <div class="title"></div>
-      <div><span class="price"></span> 원</div>
-    </article>
-  </template>
-  </div>
-  <!-- 상품 세부내용 -->
-  <template id="product-detail">
-    <div class="page-route">
-      <span class="first">홈</span>
-      <span class="second">전체상품</span>
-      <span class="third"></span>
-      <span class="fourth"></span>
-    </div>
-    <div class="buttons">
-      <button class="add-to-cart">장바구니 넣기</button>
-      <button class="buy-it-now">바로 구매하기</button>
-    </div>
-    <div class="product-detail">
-      <img class="main-img" />
-      <h2 class="title"></h2>
-      <p class="description"></p>
-      <p class="price"></p>
-      <img class="detail-img" />
-    </div>
-  </template>
-  <script src="./index.js"></script>
-</body>
+    <!-- 상품 목록 내부의 항목 -->
+    <template id="product-item">
+      <article class="product-item">
+        <img class="main-img" />
+        <div class="title"></div>
+        <div><span class="price"></span> 원</div>
+      </article>
+    </template>
+    <!-- 상품 세부내용 -->
+    <template id="product-detail">
+      <div class="page-route">
+        <span class="first">홈</span> <span class="second">전체상품</span>
+        <span class="third"></span> <span class="fourth"></span>
+      </div>
+      <form class="cart-form">
+        <label>
+          옵션
+          <select name="option" class="select-option" required>
+            <option value="" disabled selected>옵션을 선택하세요.</option>
+          </select>
+        </label>
+        <label>
+          수량 <input type="number" name="quantity" class="quantity-choose" />
+        </label>
+        <button class="add-to-cart">장바구니 넣기</button>
+        <button class="buy-it-now">바로 구매하기</button>
+      </form>
+      <div class="product-detail">
+        <img class="main-img" />
+        <h2 class="title"></h2>
+        <p class="description"></p>
+        <p class="price"></p>
+        <img class="detail-img" />
+      </div>
+    </template>
+    <!-- 장바구니 페이지 -->
+    <template id="cart-list">
+      <div class="cart-list-wrap">
+        <section class="cart-list"></section>
+        <p class="cart-total">합계: <span class="cart-total-price"></span>원</p>
+        <button class="cart-order">주문하기</button>
+      </div>
+    </template>
+    <!-- 장바구니 페이지 내부의 항목 -->
+    <template id="cart-item">
+      <article class="cart-item">
+        <img class="cart-main-img" />
+        <div class="title"></div>
+        <div class="price-wrap"><span class="price"></span> 원</div>
+        <div class="quantity-wrap"><span class="quantity"></span> 개</div>
+        <button class="cart-delete">삭제</button>
+      </article>
+    </template>
 
+    <div class="root"></div>
+
+    <script src="./index.js"></script>
+  </body>
 </html>
