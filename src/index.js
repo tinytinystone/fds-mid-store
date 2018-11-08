@@ -203,6 +203,7 @@ async function drawProductDetail(productId) {
   // 4. 내용 채우기
   categoryRouteEl.textContent = category
   titleRouteEl.textContent = title
+  priceEl.textContent = '가격을 확인하시려면, 옵션을 선택해 주세요.'
 
   options.forEach(option => {
     const optionEl = document.createElement("option")
@@ -213,10 +214,14 @@ async function drawProductDetail(productId) {
 
   titleEl.textContent = title
   descEl.textContent = description
-  priceEl.textContent = options[0].price
   mainImgEl.setAttribute("src", mainImgUrl)
   detailImgEl.setAttribute("src", detailImgUrls[0])
   // 5. 이벤트 리스너 등록하기
+  selectEl.addEventListener('change', e => {
+    const optionId = parseInt(e.target.value);
+    const option = options.find(item => item.id === optionId)
+    priceEl.textContent = `${option.price} 원`
+  })
   formEl.addEventListener('submit', async e => {
     e.preventDefault()
     const optionId = parseInt(e.target.elements.option.value)
@@ -256,11 +261,11 @@ async function drawCartList() {
     // 2. 요소 선택
     const mainImgEl = frag.querySelector('.cart-main-img')
     const titleEl = frag.querySelector('.title')
-    const priceEl = frag.querySelector('.price')
-    const quantityEl = frag.querySelector('.quantity')
+    const priceEl = frag.querySelector('.price-in-cart')
+    const quantityEl = frag.querySelector('.quantity-in-cart')
     const cartDeleteBtnEl = frag.querySelector('.cart-delete')
     // 3. 필요한 데이터 불러오기
-    quantityEl.textContent = cartItem.quantityEl
+    quantityEl.textContent = cartItem.quantity
     const option = optionList.find(item => item.id === cartItem.optionId)
     priceEl.textContent = option.price
     mainImgEl.setAttribute("src", option.product.mainImgUrl)
